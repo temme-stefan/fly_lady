@@ -20,7 +20,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "npm run-script build && ssh u106909590@access895651998.webspace-data.io \"rm -rf ~/staticSites/flylady/*\" && scp -r build/* u106909590@access895651998.webspace-data.io:~/staticSites/flylady"
   },
   "eslintConfig": {
     "extends": [
