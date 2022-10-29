@@ -20,7 +20,7 @@ function getZone(date: Date, user: User): Zone {
     }
     const currentWeekStarter = week % zoneCount;
     const lastWeekStarter = (week + zoneCount - 1) % zoneCount;
-    return week % 2 == allUsers.indexOf(user) ? currentWeekStarter : lastWeekStarter;
+    return week % 2 != allUsers.indexOf(user) ? currentWeekStarter : lastWeekStarter;
 }
 
 function toTask(reoccuringTask: ReoccurringTask, date: Date, user: User): Task {
@@ -62,7 +62,7 @@ function getReoccuringTasks() {
     return [...RoutineTasks, ...BlessingTasks, ...ZoneTasks]
 }
 
-export function getTaskOfTheWeek(user: User, date: Date): Task[] {
+export function getTasksOfTheWeek(user: User, date: Date): Task[] {
     return getReoccuringTasks().filter(t => t.user === user && isTaskInWeek(t, date)).map(t => toTask(t, date, user))
 }
 
