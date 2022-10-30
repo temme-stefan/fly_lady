@@ -1,8 +1,11 @@
-
 export enum User {
-    Sysy = "Sysy",
-    Nappo = "Nappo"
+    Sysy,
+    Nappo
 }
 
-export const allUsers = Object.keys(User).filter(v => isNaN(Number(v)));
-export const userCount = allUsers.length;
+export const UserData = new Map([
+    [User.Nappo, {displayName: "Nappo"}],
+    [User.Sysy, {displayName: "Sysy"}]
+])
+
+export const userCount = UserData.size;

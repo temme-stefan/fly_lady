@@ -6,8 +6,8 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-main,header,section,article{
-  padding-left: 2rem;
+main, section, article, form {
+  padding-left: 1rem;
 }
 
 code {
