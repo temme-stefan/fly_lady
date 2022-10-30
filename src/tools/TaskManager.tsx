@@ -26,7 +26,7 @@ function getZone(date: Date, user: User): Zone {
 function toTask(reoccuringTask: ReoccurringTask, date: Date, user: User): Task {
     const day = reoccuringTask.dayOfWeek;
     const type = reoccuringTask.type;
-    let label = "unknown Task";
+    let label = "unknown TaskCard";
     switch (type) {
         case TaskType.Blessing:
             label = blessingLabel;
