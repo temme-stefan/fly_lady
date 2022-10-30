@@ -1,0 +1,19 @@
+form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form > * {
+    display: flex;
+    flex-direction: column;
+}
+
+form > * > select, form > * > input {
+    border: 1px solid var(--blue_shadow);
+    padding: 0.2rem;
+    border-radius: 3px;
+    background-color: rgba(255, 255, 255, 0.4);
+
+}

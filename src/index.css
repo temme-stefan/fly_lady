@@ -1,16 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --blue_light: #a6cfed;
+  --blue: #4DA0DC;
+  --blue_shadow: #4590C6;
+  --white: #FFFFFF;
+  --white_shadow: #E9EDF5;
+  --grey: #636978;
+  --grey_shadow: #414952;
+  --grey_dark: #344D5B;
+  --grey_dark_shadow: #23272B;
+  --red: #FF6C52;
+  --red_shadow: #FF432E
+}
+
+:root {
+  --sansserif: "Source Sans Variable", sans-serif;
+  --serif: "Source Serif VF", serif;
+  --headline: var(--sansserif);
+  --main: var(--sansserif);
+}
+
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--main);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin: 0;
+  color: var(--grey_dark_shadow);
 }
 
-main, section, article, form {
-  padding-left: 1rem;
+h1 {
+  font-family: var(--headline);
+  font-size: 2em;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h2 {
+  font-family: var(--headline);
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.3em;
+}
+
+h4 {
+  font-size: 1.1em;
+}
+
+@media (min-width: 500px) {
+  body {
+    font-size: 1.125rem;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 0.5em 0;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+/* Works on Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--blue) transparent;
+}
+
+/* Works on Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: var(--blue);
+  border-radius: 20px;
 }

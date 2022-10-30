@@ -1,0 +1,13 @@
+main > * {
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid var(--blue_shadow);
+}
+
+main {
+    margin: 0;
+    background-color: white;
+    background-image: radial-gradient(farthest-corner at 15% 25%, var(--blue_light), var(--blue) 80%, var(--blue_shadow));
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}

@@ -1,4 +1,5 @@
 import {FilterScope, FilterScopeLabels, FilterState} from "./Definitions";
+import "./FilterRegion.css"
 import {User, UserData} from "../data/User";
 import {ManagedSelect} from "./ManagedSelect";
 

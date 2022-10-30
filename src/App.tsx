@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './App.css';
+import "./App.css";
 import {User} from "./data/User";
 import {getTasksOftheDay, getTasksOfTheWeek} from "./tools/TaskManager";
 import {FilterScope, FilterState, getTitle} from "./uicomponents/Definitions";
@@ -21,8 +21,8 @@ function App() {
     const [title, setTitle] = useState<string>(getTitle());
     const update = (state: FilterState) => {
         setFilterState(state);
-        setTitle(getTitle);
         localStorage.setItem(filterStorageKey, JSON.stringify(state));
+        setTitle(getTitle());
     }
 
     const users = [User.Sysy, User.Nappo].filter(u => filterState.user === null || filterState.user === u);
