@@ -3,6 +3,7 @@ form {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    max-width: 500px;
 }
 
 form > * {

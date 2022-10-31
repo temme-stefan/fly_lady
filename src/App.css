@@ -1,5 +1,7 @@
 main > * {
     padding: 0.5rem 1rem;
+}
+main > *:not(:last-child){
     border-bottom: 1px solid var(--blue_shadow);
 }
 
@@ -9,7 +11,21 @@ main {
     background-image: radial-gradient(farthest-corner at 15% 25%, var(--blue_light), var(--blue) 80%, var(--blue_shadow));
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
     max-height: 100vh;
     overflow: auto;
+}
+
+main >.taskPane{
+    flex-grow: 1;
+}
+
+.week {
+    display: grid;
+    grid-gap: 0.5em;
+    grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+}
+
+footer{
+    font-size: small;
 }

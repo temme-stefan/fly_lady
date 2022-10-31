@@ -1,0 +1,53 @@
+.task {
+    margin-top: 0.3rem;
+    padding: 0.3rem;
+    border-radius: 3px;
+    border: 1px solid var(--blue_shadow);
+    display: grid;
+    grid-template:
+    "avatar content" 50px
+    "name content" auto
+    / 50px auto;
+}
+.task.zone{
+    background: linear-gradient(to right,transparent, transparent 80%,var(--c-zone));
+}
+.task.fokus{
+    background: linear-gradient(to right,transparent, transparent 80%,var(--c-focus));
+}
+
+.task.routine{
+    background: linear-gradient(to right,transparent, transparent 80%,var(--c-routine));
+}
+
+.task .avatar{
+    grid-area: avatar;
+    width:100%;
+    height:100%;
+    border-radius: 50%;
+    background:var(--blue_light);
+    border: 1px solid var(--white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.task .avatar img{
+    width:80%;
+}
+
+.task .username{
+    grid-area: name;
+    text-align: center;
+}
+
+.task .content{
+    grid-area: content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.task .content>*{
+    text-align: center;
+}

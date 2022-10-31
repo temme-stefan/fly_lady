@@ -14,12 +14,16 @@
   --grey_dark: #344D5B;
   --grey_dark_shadow: #23272B;
   --red: #FF6C52;
-  --red_shadow: #FF432E
+  --red_shadow: #FF432E;
+
+
+  --c-routine:#00FF00AA;
+  --c-focus:#FFFF00AA;
+  --c-zone:#FF0000AA;
 }
 
 :root {
   --sansserif: "Source Sans Variable", sans-serif;
-  --serif: "Source Serif VF", serif;
   --headline: var(--sansserif);
   --main: var(--sansserif);
 }
@@ -32,6 +36,10 @@ body {
   color: var(--grey_dark_shadow);
   max-height:100vh;
   overflow: hidden;
+}
+
+a{
+ color: inherit;
 }
 
 h1 {
