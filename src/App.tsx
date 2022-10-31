@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import "./App.css";
+import logo from "./img/window_clean.png";
 import {User} from "./data/User";
 import {getTasksOftheDay, getTasksOfTheWeek} from "./tools/TaskManager";
 import {FilterScope, FilterState, getTitle} from "./uicomponents/Definitions";
@@ -33,6 +34,8 @@ function App() {
     return (
         <main>
             <header>
+                <div className={"logo"} onClick={() => setTitle(getTitle())}><img src={logo}
+                                                                                  alt={"Scheibenwischwerkzeuge"}/></div>
                 <h1>{title}</h1>
             </header>
             <section>
@@ -66,7 +69,8 @@ function App() {
                 </div>
                 <div>
                     <span>Code at</span>
-                    <ExternalLink url={"https://github.com/temme-stefan/fly_lady/issues"} title={"Stefans GitHub"} text={"github"}/>
+                    <ExternalLink url={"https://github.com/temme-stefan/fly_lady/issues"} title={"Stefans GitHub"}
+                                  text={"github"}/>
                 </div>
             </footer>
         </main>
