@@ -1,4 +1,5 @@
 import {Task} from "../tools/TaskManager";
+import "./Week.css"
 import {addDays, dayOfWeek, getMonday} from "../tools/Weekdays";
 import SingleDay from "./SingleDay";
 
@@ -12,7 +13,7 @@ export default function Week({tasks, date}: { tasks: Task[], date: Date }) {
     });
 
     return (
-        <section>
+        <section className={"week"}>
             {partition.map(({date, tasks}) => (
                 <SingleDay key={date.toDateString()} tasks={tasks} date={date}/>
             ))}

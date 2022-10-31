@@ -3,7 +3,8 @@ import {Weekday, WeekFrequenz} from "../tools/Definitions";
 import {ReoccurringTask, TaskType} from "./Definitions";
 
 const labels = new Map([
-    ["blessing", "Home-Blessing"]
+    ["blessing", "Home-Blessing"],
+    ["food", "Essenplanung & Einkaufszettel"],
 ]);
 
 export const FokusTasks: ReoccurringTask[] = [
@@ -13,6 +14,20 @@ export const FokusTasks: ReoccurringTask[] = [
         week: WeekFrequenz.Even,
         type: TaskType.Fokus,
         label: labels.get('blessing')
+    },
+    {
+        user: User.Nappo,
+        dayOfWeek: Weekday.Thursday,
+        week: WeekFrequenz.Every,
+        type: TaskType.Fokus,
+        label: labels.get('food')
+    },
+    {
+        user: User.Nappo,
+        dayOfWeek: Weekday.Monday,
+        week: WeekFrequenz.Every,
+        type: TaskType.Fokus,
+        label: labels.get('food')
     },
     {
         user: User.Sysy,

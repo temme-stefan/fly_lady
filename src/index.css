@@ -6,6 +6,7 @@
   --blue_light: #a6cfed;
   --blue: #4DA0DC;
   --blue_shadow: #4590C6;
+  --funktionalOverlay:rgba(255,255,255,0.4);
   --white: #FFFFFF;
   --white_shadow: #E9EDF5;
   --grey: #636978;
@@ -29,6 +30,8 @@ body {
   line-height: 1.5;
   margin: 0;
   color: var(--grey_dark_shadow);
+  max-height:100vh;
+  overflow: hidden;
 }
 
 h1 {
@@ -64,7 +67,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Works on Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: var(--blue) transparent;
+  scrollbar-color: var(--funktionalOverlay) transparent;
 }
 
 /* Works on Chrome, Edge, and Safari */
@@ -77,6 +80,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: var(--blue);
+  background-color: var(--funktionalOverlay);
   border-radius: 20px;
 }

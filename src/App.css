@@ -9,5 +9,7 @@ main {
     background-image: radial-gradient(farthest-corner at 15% 25%, var(--blue_light), var(--blue) 80%, var(--blue_shadow));
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: auto;
 }
