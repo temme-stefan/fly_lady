@@ -48,10 +48,11 @@ function App() {
             <footer>
                 <div>
                     <span>Icons made by</span>
-                    <ExternalLink url={"https://www.flaticon.com/packs/student-avatars-1"}
-                                  title={"Freepik Student Avatars"} text={"Freepik"}/>
+                    <ExternalLink url={"https://www.flaticon.com/authors/freepik"}
+                                  title={"Freepik Studentavatar Star"} text={"Freepik"}/>
+
                     <span>and</span>
-                    <ExternalLink url={"https://www.flaticon.com/de/packs/hygiene-37"}
+                    <ExternalLink url={"https://www.flaticon.com/de/autoren/surang"}
                                   title={"surang Hygiene"} text={"surang"}/>
                     <span>from</span>
                     <ExternalLink url={"https://www.flaticon.com/"} title={"Flaticon"} text={"www.flaticon.com"}/>
