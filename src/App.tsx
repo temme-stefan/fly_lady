@@ -45,7 +45,7 @@ function App() {
                 )}
             </section>
             <footer>
-                <div> Icons made by <a href="https://www.flaticon.com/authors/freepik" rel={"external"}
+                <div> Icons made by <a href="https://www.flaticon.com/packs/student-avatars-1" rel={"external"}
                                        referrerPolicy={"no-referrer"} title="Freepik"> Freepik </a> and <a
                     href="https://www.flaticon.com/de/kostenlose-icons/fenster-putzen" rel={"external"}
                     referrerPolicy={"no-referrer"} title="fenster putzen Icons">surang</a> from <a
