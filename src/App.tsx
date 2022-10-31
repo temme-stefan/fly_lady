@@ -46,9 +46,9 @@ function App() {
             </section>
             <footer>
                 <div> Icons made by <a href="https://www.flaticon.com/packs/student-avatars-1" rel={"external"}
-                                       referrerPolicy={"no-referrer"} title="Freepik"> Freepik </a> and <a
-                    href="https://www.flaticon.com/de/kostenlose-icons/fenster-putzen" rel={"external"}
-                    referrerPolicy={"no-referrer"} title="fenster putzen Icons">surang</a> from <a
+                                       referrerPolicy={"no-referrer"} title="Freepik Student Avatars"> Freepik </a> and <a
+                    href="https://www.flaticon.com/de/packs/hygiene-37" rel={"external"}
+                    referrerPolicy={"no-referrer"} title="surang Hygiene">surang</a> from <a
                     href="https://www.flaticon.com/" referrerPolicy={"no-referrer"} rel={"external"}
                     title="Flaticon">www.flaticon.com</a></div>
                 <div>Font <a href="https://github.com/adobe-fonts/source-sans-pro"
