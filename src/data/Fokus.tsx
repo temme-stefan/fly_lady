@@ -1,10 +1,10 @@
 import {User} from "./User";
 import {Weekday, WeekFrequenz} from "../tools/Definitions";
-import {ReoccurringTask, TaskType} from "./Definitions";
+import {ReoccurringTask, TaskMetaData, TaskType} from "./Definitions";
 
-const labels = new Map([
-    ["blessing", "Home-Blessing"],
-    ["food", "Essenplanung & Einkaufszettel"],
+const meta: Map<string, TaskMetaData> = new Map([
+    ["blessing", {label: "Home-Blessing", description: "Lorem Ipsum sid Dolorum"}],
+    ["food", {label: "Essenplanung & Einkaufszettel"}],
 ]);
 
 export const FokusTasks: ReoccurringTask[] = [
@@ -13,27 +13,27 @@ export const FokusTasks: ReoccurringTask[] = [
         dayOfWeek: Weekday.Friday,
         week: WeekFrequenz.Even,
         type: TaskType.Fokus,
-        label: labels.get('blessing')
+        ...meta.get('blessing')!
     },
     {
         user: User.Nappo,
         dayOfWeek: Weekday.Thursday,
         week: WeekFrequenz.Every,
         type: TaskType.Fokus,
-        label: labels.get('food')
+        ...meta.get('food')!
     },
     {
         user: User.Nappo,
         dayOfWeek: Weekday.Monday,
         week: WeekFrequenz.Every,
         type: TaskType.Fokus,
-        label: labels.get('food')
+        ...meta.get('food')!
     },
     {
         user: User.Sysy,
         dayOfWeek: Weekday.Friday,
         week: WeekFrequenz.Odd,
         type: TaskType.Fokus,
-        label: labels.get('blessing')
+        ...meta.get('blessing')!
     },
 ]

@@ -6,7 +6,13 @@ export interface ReoccurringTask {
     dayOfWeek: Weekday,
     week: WeekFrequenz,
     type: TaskType,
-    label?: string
+    label?: string,
+    description?:string
+}
+
+export interface TaskMetaData {
+    label: string,
+    description?:string
 }
 
 

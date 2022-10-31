@@ -3,12 +3,20 @@ import {User} from "./User";
 import {Weekday, WeekFrequenz} from "../tools/Definitions";
 
 export enum Zone {
-    "Flur & Treppenhaus & Arbeitszimmer",
+    "Flur",
     "Küche",
     "Wohnzimmer",
-    "Kinderzimmer & Schlafzimmer",
-    "Bad & duschbad"
+    "Schlafzimmer",
+    "Bäder"
 }
+
+export const zoneData: Map<Zone, { label: string, description?: string }> = new Map([
+    [Zone.Flur, {label: "Flur & Treppenhaus & Arbeitszimmer"}],
+    [Zone.Küche, {label: "Küche"}],
+    [Zone.Wohnzimmer, {label: "Wohnzimmer"}],
+    [Zone.Schlafzimmer, {label: "Kinderzimmer & Schlafzimmer"}],
+    [Zone.Bäder, {label: "Bad & Duschbad"}]
+])
 
 export const zoneCount = Object.keys(Zone).filter(v => isNaN(Number(v))).length;
 

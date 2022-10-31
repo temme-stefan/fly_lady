@@ -2,7 +2,7 @@ import {User, userCount, UserData} from "../data/User";
 import {ReoccurringTask, TaskType} from "../data/Definitions";
 import {Weekday, WeekFrequenz} from "./Definitions";
 import {FokusTasks} from "../data/Fokus";
-import {Zone, zoneCount, ZoneTasks} from "../data/Zone";
+import {Zone, zoneCount, zoneData, ZoneTasks} from "../data/Zone";
 import {RoutineTasks} from "../data/Routine";
 import {dateToWeek} from "./DateToWeek";
 import {dayOfWeek} from "./Weekdays";
@@ -10,6 +10,7 @@ import {dayOfWeek} from "./Weekdays";
 export interface Task {
     day: Weekday,
     label: string,
+    description:string,
     type: TaskType,
     user: User,
 }
@@ -28,14 +29,19 @@ function toTask(reoccuringTask: ReoccurringTask, date: Date, user: User): Task {
     const day = reoccuringTask.dayOfWeek;
     const type = reoccuringTask.type;
     let label = reoccuringTask.label ?? "unknown TaskCard";
+    let description = reoccuringTask.description ?? "";
     switch (type) {
         case TaskType.Zone:
-            label = Zone[getZone(date, user)]
+            const data = zoneData.get(getZone(date,user));
+            if (data){
+                label = data.label;
+                description = data?.description ?? description;
+            }
             break;
     }
 
     return {
-        day, type, label, user
+        day, type, label, user, description
     }
 }
 

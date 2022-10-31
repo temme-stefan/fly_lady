@@ -7,8 +7,13 @@
     grid-template:
     "avatar content" 50px
     "name content" auto
+    "description description" auto
     / 50px auto;
 }
+.task.clickable{
+    cursor:pointer;
+}
+
 .task.zone{
     background: linear-gradient(to right,transparent, transparent 80%,var(--c-zone));
 }
@@ -18,6 +23,10 @@
 
 .task.routine{
     background: linear-gradient(to right,transparent, transparent 80%,var(--c-routine));
+}
+
+.task .description{
+    grid-area: description;
 }
 
 .task .avatar{
