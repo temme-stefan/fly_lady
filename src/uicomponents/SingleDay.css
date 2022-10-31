@@ -16,7 +16,7 @@
     position: absolute;
     right:0;
     background-color: var(--blue_light);
-    background-image: url("../../public/img/star.png");
+    background-image: url("../img/star.png");
     background-size:70%;
     background-repeat: no-repeat;
     background-position: center;
