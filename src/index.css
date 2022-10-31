@@ -22,6 +22,10 @@
   --c-zone:#FF0000AA;
 }
 
+input:focus-visible ,select:focus-visible{
+  outline-color: var(--blue_shadow);
+}
+
 :root {
   --sansserif: "Source Sans Variable", sans-serif;
   --headline: var(--sansserif);

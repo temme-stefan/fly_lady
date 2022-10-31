@@ -6,6 +6,7 @@ import {FilterScope, FilterState, getTitle} from "./uicomponents/Definitions";
 import FilterRegion from "./uicomponents/FilterRegion";
 import Week from "./uicomponents/Week";
 import SingleDay from "./uicomponents/SingleDay";
+import {ExternalLink} from "./uicomponents/ExternalLink";
 
 
 function App() {
@@ -45,17 +46,23 @@ function App() {
                 )}
             </section>
             <footer>
-                <div> Icons made by <a href="https://www.flaticon.com/packs/student-avatars-1" rel={"external"}
-                                       referrerPolicy={"no-referrer"} title="Freepik Student Avatars"> Freepik </a> and <a
-                    href="https://www.flaticon.com/de/packs/hygiene-37" rel={"external"}
-                    referrerPolicy={"no-referrer"} title="surang Hygiene">surang</a> from <a
-                    href="https://www.flaticon.com/" referrerPolicy={"no-referrer"} rel={"external"}
-                    title="Flaticon">www.flaticon.com</a></div>
-                <div>Font <a href="https://github.com/adobe-fonts/source-sans-pro"
-                             title="Source Sans Pro" referrerPolicy="no-referrer"
-                             rel="external" target="_blank">Source Sans
-                    Pro</a> provided by <a href="https://github.com/adobe-fonts" title="Adobe Fonts"
-                                           referrerPolicy="no-referrer" rel="external" target="_blank">Adobe Fonts</a>
+                <div>
+                    <span>Icons made by</span>
+                    <ExternalLink url={"https://www.flaticon.com/packs/student-avatars-1"}
+                                  title={"Freepik Student Avatars"} text={"Freepik"}/>
+                    <span>and</span>
+                    <ExternalLink url={"https://www.flaticon.com/de/packs/hygiene-37"}
+                                  title={"surang Hygiene"} text={"surang"}/>
+                    <span>from</span>
+                    <ExternalLink url={"https://www.flaticon.com/"} title={"Flaticon"} text={"www.flaticon.com"}/>
+                </div>
+                <div>
+                    <span>Font</span>
+                    <ExternalLink url={"https://github.com/adobe-fonts/source-sans-pro"} title={"Source Sans Pro"}
+                                  text={"Source Sans Pro"}/>
+                    <span>provided by</span>
+                    <ExternalLink url={"https://github.com/adobe-fonts"} title={"Adobe Fonts"} text={"Adobe Fonts"}/>
+
                 </div>
             </footer>
         </main>
