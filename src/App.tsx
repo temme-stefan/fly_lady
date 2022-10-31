@@ -62,7 +62,10 @@ function App() {
                                   text={"Source Sans Pro"}/>
                     <span>provided by</span>
                     <ExternalLink url={"https://github.com/adobe-fonts"} title={"Adobe Fonts"} text={"Adobe Fonts"}/>
-
+                </div>
+                <div>
+                    <span>Code at</span>
+                    <ExternalLink url={"https://github.com/temme-stefan/fly_lady/issues"} title={"Stefans GitHub"} text={"github"}/>
                 </div>
             </footer>
         </main>
