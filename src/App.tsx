@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import "./App.css";
 import logo from "./img/window_clean.png";
 import {User} from "./data/User";
-import {getTasksOftheDay, getTasksOfTheWeek} from "./tools/TaskManager";
+import {getTasksOfTheDay, getTasksOfTheWeek} from "./tools/TaskManager";
 import {FilterScope, FilterState, getTitle} from "./uicomponents/Definitions";
 import FilterRegion from "./uicomponents/FilterRegion";
 import Week from "./uicomponents/Week";
@@ -29,7 +29,7 @@ function App() {
 
     const users = [User.Sysy, User.Nappo].filter(u => filterState.user === null || filterState.user === u);
     const tasks = users.map(
-        u => filterState.scope === FilterScope.SingleDay ? getTasksOftheDay(u, filterState.date) : getTasksOfTheWeek(u, filterState.date)
+        u => filterState.scope === FilterScope.SingleDay ? getTasksOfTheDay(u, filterState.date) : getTasksOfTheWeek(u, filterState.date)
     ).flat();
     return (
         <main>

@@ -2,7 +2,7 @@ import {User, userCount, UserData} from "../data/User";
 import {ReoccurringTask, TaskType} from "../data/Definitions";
 import {Weekday, WeekFrequenz} from "./Definitions";
 import {FokusTasks} from "../data/Fokus";
-import {Zone, zoneCount, zoneData, ZoneTasks} from "../data/Zone";
+import {Zone, zoneCount, ZoneMeta, ZoneTasks} from "../data/Zone";
 import {RoutineTasks} from "../data/Routine";
 import {dateToWeek} from "./DateToWeek";
 import {dayOfWeek} from "./Weekdays";
@@ -16,7 +16,7 @@ export interface Task {
 }
 
 function getZone(date: Date, user: User): Zone {
-    const week = dateToWeek(date);
+    const week = dateToWeek(date)+6;
     if (userCount !== 2) {
         throw Error("Zuviele Nutzer");
     }
@@ -32,7 +32,7 @@ function toTask(reoccuringTask: ReoccurringTask, date: Date, user: User): Task {
     let description = reoccuringTask.description ?? "";
     switch (type) {
         case TaskType.Zone:
-            const data = zoneData.get(getZone(date,user));
+            const data = ZoneMeta.get(getZone(date,user));
             if (data){
                 label = data.label;
                 description = data?.description ?? description;
@@ -65,7 +65,7 @@ export function getTasksOfTheWeek(user: User, date: Date): Task[] {
     return getReoccuringTasks().filter(t => t.user === user && isTaskInWeek(t, date)).map(t => toTask(t, date, user))
 }
 
-export function getTasksOftheDay(user: User, date: Date): Task[] {
+export function getTasksOfTheDay(user: User, date: Date): Task[] {
     return getReoccuringTasks().filter(t => t.user === user && isTaskInWeek(t, date) && dayOfWeek(date) === t.dayOfWeek).map(t => toTask(t, date, user))
 }
 

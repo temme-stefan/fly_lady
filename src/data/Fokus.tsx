@@ -2,9 +2,14 @@ import {User} from "./User";
 import {Weekday, WeekFrequenz} from "../tools/Definitions";
 import {ReoccurringTask, TaskMetaData, TaskType} from "./Definitions";
 
-const meta: Map<string, TaskMetaData> = new Map([
-    ["blessing", {label: "Home-Blessing", description: "Lorem Ipsum sid Dolorum"}],
-    ["food", {label: "Essenplanung & Einkaufszettel"}],
+export enum Focus {
+    blessing,
+    food
+}
+
+export const FocusMeta: Map<Focus, TaskMetaData> = new Map([
+    [Focus.blessing, {label: "Home-Blessing", description: "Lorem Ipsum sid Dolorum"}],
+    [Focus.food, {label: "Essenplanung & Einkaufszettel"}],
 ]);
 
 export const FokusTasks: ReoccurringTask[] = [
@@ -13,27 +18,27 @@ export const FokusTasks: ReoccurringTask[] = [
         dayOfWeek: Weekday.Friday,
         week: WeekFrequenz.Even,
         type: TaskType.Fokus,
-        ...meta.get('blessing')!
+        ...FocusMeta.get(Focus.blessing)!
     },
     {
         user: User.Nappo,
         dayOfWeek: Weekday.Thursday,
         week: WeekFrequenz.Every,
         type: TaskType.Fokus,
-        ...meta.get('food')!
+        ...FocusMeta.get(Focus.food)!
     },
     {
         user: User.Nappo,
         dayOfWeek: Weekday.Monday,
         week: WeekFrequenz.Every,
         type: TaskType.Fokus,
-        ...meta.get('food')!
+        ...FocusMeta.get(Focus.food)!
     },
     {
         user: User.Sysy,
         dayOfWeek: Weekday.Friday,
         week: WeekFrequenz.Odd,
         type: TaskType.Fokus,
-        ...meta.get('blessing')!
+        ...FocusMeta.get(Focus.blessing)!
     },
 ]

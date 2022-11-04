@@ -4,13 +4,13 @@ import {Weekday, WeekFrequenz} from "../tools/Definitions";
 
 export enum Zone {
     "Flur",
-    "Küche",
-    "Wohnzimmer",
     "Schlafzimmer",
+    "Wohnzimmer",
+    "Küche",
     "Bäder"
 }
 
-export const zoneData: Map<Zone, { label: string, description?: string }> = new Map([
+export const ZoneMeta: Map<Zone, { label: string, description?: string }> = new Map([
     [Zone.Flur, {label: "Flur & Treppenhaus & Arbeitszimmer"}],
     [Zone.Küche, {label: "Küche"}],
     [Zone.Wohnzimmer, {label: "Wohnzimmer"}],
