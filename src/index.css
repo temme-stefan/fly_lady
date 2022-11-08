@@ -38,8 +38,6 @@ body {
   line-height: 1.5;
   margin: 0;
   color: var(--grey_dark_shadow);
-  max-height:100vh;
-  overflow: hidden;
 }
 
 a{
