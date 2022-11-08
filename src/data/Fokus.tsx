@@ -4,12 +4,28 @@ import {ReoccurringTask, TaskMetaData, TaskType} from "./Definitions";
 
 export enum Focus {
     blessing,
-    food
+    food,
+    EinkaufDM,
+    ArturAllein,
+    RobinAllein,
+    BeideKinder,
+    KleidungKinder,
 }
 
 export const FocusMeta: Map<Focus, TaskMetaData> = new Map([
-    [Focus.blessing, {label: "Home-Blessing", description: "Lorem Ipsum sid Dolorum"}],
-    [Focus.food, {label: "Essenplanung & Einkaufszettel"}],
+    [Focus.blessing, {
+        label: "Home-Blessing",
+        description: "Staubsaugen 30 Min, Duschbad light 15 Min, Türen & Spiegel & Steckdosen 15 Min"
+    }],
+    [Focus.food, {label: "Essenplanung & Einkaufszettel",description:"Essensplan erstellen & bei Picnic bestellen"}],
+    [Focus.EinkaufDM, {label: "Einkaufen bei dm", description: "Einkaufen bei dm (per App oder in person)"}],
+    [Focus.ArturAllein, {label: "Nachmittag mit Artur allein", description: "Nachmittag mit Artur allein"}],
+    [Focus.RobinAllein, {label: "Nachmittag mit Robin allein", description: "Nachmittag mit Robin allein"}],
+    [Focus.BeideKinder, {label: "Nachmittag mit beiden Kindern", description: "Nachmittag mit beiden Kindern"}],
+    [Focus.KleidungKinder, {
+        label: "Kleidung der Kinder aktualisieren",
+        description: "Kleidung der Kinder aussortieren / in Kartons und Keller sortieren / neue Kleidung aus dem Keller holen oder einkaufen"
+    }],
 ]);
 
 export const FokusTasks: ReoccurringTask[] = [

@@ -6,6 +6,10 @@ export enum User {
     Nappo
 }
 
+export function homeUser() {
+    return User.Sysy;
+}
+
 export const UserData = new Map([
     [User.Sysy, {displayName: "Sysy", picture: girl}],
     [User.Nappo, {displayName: "Nappo", picture: boy}],
