@@ -10,13 +10,14 @@ import {dayOfWeek} from "./Weekdays";
 export interface Task {
     day: Weekday,
     label: string,
-    description:string,
+    description: string,
     type: TaskType,
     user: User,
+    sort: number
 }
 
 function getZone(date: Date, user: User): Zone {
-    const week = dateToWeek(date)+6;
+    const week = dateToWeek(date) + 6;
     if (userCount !== 2) {
         throw Error("Zuviele Nutzer");
     }
@@ -30,19 +31,20 @@ function toTask(reoccuringTask: ReoccurringTask, date: Date, user: User): Task {
     const type = reoccuringTask.type;
     let label = reoccuringTask.label ?? "unknown TaskCard";
     let description = reoccuringTask.description ?? "";
+    const sort = reoccuringTask.sort ?? 0;
+    let result = {
+        day, type, label, user, description, sort
+    }
     switch (type) {
         case TaskType.Zone:
-            const data = ZoneMeta.get(getZone(date,user));
-            if (data){
-                label = data.label;
-                description = data?.description ?? description;
+            const data = ZoneMeta.get(getZone(date, user));
+            if (data) {
+                result = {...result,...data}
             }
             break;
     }
 
-    return {
-        day, type, label, user, description
-    }
+    return result;
 }
 
 function isTaskInWeek(task: ReoccurringTask, date: Date) {
@@ -62,10 +64,10 @@ function getReoccuringTasks() {
 }
 
 export function getTasksOfTheWeek(user: User, date: Date): Task[] {
-    return getReoccuringTasks().filter(t => t.user === user && isTaskInWeek(t, date)).map(t => toTask(t, date, user))
+    return getReoccuringTasks().filter(t => t.user === user && isTaskInWeek(t, date)).map(t => toTask(t, date, user));
 }
 
 export function getTasksOfTheDay(user: User, date: Date): Task[] {
-    return getReoccuringTasks().filter(t => t.user === user && isTaskInWeek(t, date) && dayOfWeek(date) === t.dayOfWeek).map(t => toTask(t, date, user))
+    return getReoccuringTasks().filter(t => t.user === user && isTaskInWeek(t, date) && dayOfWeek(date) === t.dayOfWeek).map(t => toTask(t, date, user));
 }
 

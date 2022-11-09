@@ -7,13 +7,15 @@ export interface ReoccurringTask {
     week: WeekFrequenz,
     type: TaskType,
     label?: string,
-    description?: string
+    description?: string,
+    sort?: number,
 }
 
 export interface ImportTaskMetaData {
     key: string,
     label: string,
-    description?: string
+    description?: string,
+    sort?: number,
 }
 
 
