@@ -2,3 +2,11 @@ key,user,dayOfWeek,weekFrequenz
 blessing,Nappo,Friday,Even
 Essenplan,Nappo,"Monday,Thursday",Every
 blessing,Sysy,Friday,Odd
+EinkaufDM,Sysy,Monday,Every
+ArturAllein,Nappo,Wednesday,Every
+RobinAllein,Sysy,Wednesday,Every
+BeideKinder,Nappo,Friday,Odd
+BeideKinder,Sysy,Friday,Even
+ArturAllein,Sysy,Thursday,Every
+RobinAllein,Nappo,Thursday,Every
+KleidungKinder,Sysy,Tuesday,Every
