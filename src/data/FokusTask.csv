@@ -1,5 +1,4 @@
 key,user,dayOfWeek,weekFrequenz
 blessing,Nappo,Friday,Even
-Essenplan,Nappo,Thursday,Every
-Essenplan,Nappo,Monday,Every
+Essenplan,Nappo,"Monday,Thursday",Every
 blessing,Sysy,Friday,Odd
