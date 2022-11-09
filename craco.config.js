@@ -19,10 +19,19 @@ module.exports={
             return webpackConfig;
         },
     },
-    // jest:{
-    //     configure: (jestConfig, { env, paths, resolve, rootDir }) => {
-    //         jestConfig.transform['^.+\\.csv$'] = "./jest-csv-transformer.js";
-    //         return jestConfig;
-    //     },
-    // }
+    jest:{
+        configure: (jestConfig, { env, paths, resolve, rootDir }) => {
+            const transforms = [ ['^.+\\.csv$',"./jest-csv-transformer.js"]].concat(
+                Object.entries(jestConfig.transform).map(([key,value])=>{
+                    if (value.endsWith('fileTransform.js')){
+                        key = '^(?!.*\\.(js|jsx|mjs|cjs|ts|tsx|css|json|csv)$)';
+                    }
+                    return [key,value];
+                })
+            );
+
+            jestConfig.transform = Object.fromEntries(transforms);
+            return jestConfig;
+        },
+    }
 }
