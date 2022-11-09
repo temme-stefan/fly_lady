@@ -7,9 +7,9 @@ import {
     ImportTask,
     ImportTaskMetaData,
     TaskMetaData,
-    TaskType,
-    toReoccurringTasks
+    TaskType
 } from "./Definitions";
+import {toReoccurringTasks} from "./Mapper";
 
 const metaLookup: Map<string, TaskMetaData> = new Map(
     (tasksMeta as ImportTaskMetaData[]).map(({key, ...data}) => [key, data])

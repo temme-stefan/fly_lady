@@ -3,7 +3,8 @@ import tasksMeta from "./ZoneMeta.csv";
 // @ts-ignore
 import tasks from "./ZoneTask.csv";
 
-import { ImportTask, ImportTaskMetaData, TaskType, toReoccurringTasks} from "./Definitions";
+import { ImportTask, ImportTaskMetaData, TaskType} from "./Definitions";
+import {toReoccurringTasks} from "./Mapper";
 
 
 
