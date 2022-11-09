@@ -19,13 +19,15 @@ export interface ImportTaskMetaData {
 }
 
 
-export type DayStrings = "Sunday" | "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday";
-export type DayStringList = "Daily" | string;
+export type ImportDayStrings = "Sunday" | "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday";
+export type ImportDayStringList = "Daily" | string;
+
+export type ImportUsers = "Sysy" | "Nappo" |"Home";
 
 export interface ImportTask {
     key: string,
-    user: "Sysy" | "Nappo",
-    dayOfWeek: DayStringList,
+    user: ImportUsers,
+    dayOfWeek: ImportDayStringList,
     weekFrequenz: "Even" | "Odd" | "Every"
 }
 
