@@ -1,60 +1,23 @@
+// @ts-ignore
+import tasksMeta from "./FokusMeta.csv";
+// @ts-ignore
+import tasks from "./FokusTask.csv";
+
 import {User} from "./User";
 import {Weekday, WeekFrequenz} from "../tools/Definitions";
-import {ReoccurringTask, TaskMetaData, TaskType} from "./Definitions";
+import {ImportTask, ImportTaskMetaData, ReoccurringTask, TaskMetaData, TaskType} from "./Definitions";
 
-export enum Focus {
-    blessing,
-    food,
-    EinkaufDM,
-    ArturAllein,
-    RobinAllein,
-    BeideKinder,
-    KleidungKinder,
-}
+export const FocusMeta: Map<string, TaskMetaData> = new Map(
+    (tasksMeta as ImportTaskMetaData[]).map(({key, ...data}) => [key, data])
+);
 
-export const FocusMeta: Map<Focus, TaskMetaData> = new Map([
-    [Focus.blessing, {
-        label: "Home-Blessing",
-        description: "Staubsaugen 30 Min, Duschbad light 15 Min, Türen & Spiegel & Steckdosen 15 Min"
-    }],
-    [Focus.food, {label: "Essenplanung & Einkaufszettel",description:"Essensplan erstellen & bei Picnic bestellen"}],
-    [Focus.EinkaufDM, {label: "Einkaufen bei dm", description: "Einkaufen bei dm (per App oder in person)"}],
-    [Focus.ArturAllein, {label: "Nachmittag mit Artur allein", description: "Nachmittag mit Artur allein"}],
-    [Focus.RobinAllein, {label: "Nachmittag mit Robin allein", description: "Nachmittag mit Robin allein"}],
-    [Focus.BeideKinder, {label: "Nachmittag mit beiden Kindern", description: "Nachmittag mit beiden Kindern"}],
-    [Focus.KleidungKinder, {
-        label: "Kleidung der Kinder aktualisieren",
-        description: "Kleidung der Kinder aussortieren / in Kartons und Keller sortieren / neue Kleidung aus dem Keller holen oder einkaufen"
-    }],
-]);
+export const FokusTasks: ReoccurringTask[] = (tasks as ImportTask[]).map(({key, user, dayOfWeek, weekFrequenz}) => {
+    return {
+        ...FocusMeta.get(key),
+        user: User[user],
+        dayOfWeek: Weekday[dayOfWeek],
+        week: WeekFrequenz[weekFrequenz],
+        type: TaskType.Fokus
+    }
+})
 
-export const FokusTasks: ReoccurringTask[] = [
-    {
-        user: User.Nappo,
-        dayOfWeek: Weekday.Friday,
-        week: WeekFrequenz.Even,
-        type: TaskType.Fokus,
-        ...FocusMeta.get(Focus.blessing)!
-    },
-    {
-        user: User.Nappo,
-        dayOfWeek: Weekday.Thursday,
-        week: WeekFrequenz.Every,
-        type: TaskType.Fokus,
-        ...FocusMeta.get(Focus.food)!
-    },
-    {
-        user: User.Nappo,
-        dayOfWeek: Weekday.Monday,
-        week: WeekFrequenz.Every,
-        type: TaskType.Fokus,
-        ...FocusMeta.get(Focus.food)!
-    },
-    {
-        user: User.Sysy,
-        dayOfWeek: Weekday.Friday,
-        week: WeekFrequenz.Odd,
-        type: TaskType.Fokus,
-        ...FocusMeta.get(Focus.blessing)!
-    },
-]

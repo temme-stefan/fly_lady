@@ -9,6 +9,18 @@ export interface ReoccurringTask {
     label?: string,
     description?:string
 }
+export interface ImportTaskMetaData{
+    key:string,
+    label: string,
+    description?:string
+}
+
+export interface ImportTask{
+    key:string,
+    user: "Sysy"|"Nappo",
+    dayOfWeek:"Sunday"|"Monday"|"Tuesday"|"Wednesday"|"Thursday"|"Friday"|"Saturday",
+    weekFrequenz:"Even"|"Odd"|"Every"
+}
 
 export interface TaskMetaData {
     label: string,

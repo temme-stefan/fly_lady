@@ -1,6 +1,12 @@
-import {ReoccurringTask, TaskType} from "./Definitions";
+// @ts-ignore
+import tasksMeta from "./ZoneMeta.csv";
+// @ts-ignore
+import tasks from "./ZoneTask.csv";
+
+import {ImportTask, ImportTaskMetaData, ReoccurringTask, TaskType} from "./Definitions";
 import {User} from "./User";
 import {Weekday, WeekFrequenz} from "../tools/Definitions";
+
 
 export enum Zone {
     "Flur",
@@ -10,39 +16,22 @@ export enum Zone {
     "Bäder"
 }
 
-export const ZoneMeta: Map<Zone, { label: string, description?: string }> = new Map([
-    [Zone.Flur, {label: "Flur & Treppenhaus & Arbeitszimmer"}],
-    [Zone.Küche, {label: "Küche"}],
-    [Zone.Wohnzimmer, {label: "Wohnzimmer"}],
-    [Zone.Schlafzimmer, {label: "Kinderzimmer & Schlafzimmer"}],
-    [Zone.Bäder, {label: "Bad & Duschbad"}]
-])
+interface ZoneTaskMetaData extends ImportTaskMetaData {
+    key: "Flur" | "Schlafzimmer" | "Wohnzimmer" | "Küche" | "Bäder"
+}
+
+
+export const ZoneMeta: Map<Zone, { label: string, description?: string }> = new Map(
+    (tasksMeta as ZoneTaskMetaData[]).map(({key, ...data}) => [Zone[key], data])
+);
 
 export const zoneCount = Object.keys(Zone).filter(v => isNaN(Number(v))).length;
 
-export const ZoneTasks: ReoccurringTask[] = [
-    {
-        user: User.Sysy,
-        dayOfWeek: Weekday.Monday,
-        week: WeekFrequenz.Every,
+export const ZoneTasks: ReoccurringTask[] = (tasks as ImportTask[]).map(({user, dayOfWeek, weekFrequenz}) => {
+    return {
+        user: User[user],
+        dayOfWeek: Weekday[dayOfWeek],
+        week: WeekFrequenz[weekFrequenz],
         type: TaskType.Zone
-    },
-    {
-        user: User.Sysy,
-        dayOfWeek: Weekday.Wednesday,
-        week: WeekFrequenz.Every,
-        type: TaskType.Zone
-    },
-    {
-        user: User.Nappo,
-        dayOfWeek: Weekday.Tuesday,
-        week: WeekFrequenz.Every,
-        type: TaskType.Zone
-    },
-    {
-        user: User.Nappo,
-        dayOfWeek: Weekday.Thursday,
-        week: WeekFrequenz.Every,
-        type: TaskType.Zone
-    },
-]
+    }
+});

@@ -2,11 +2,11 @@ import React from "react";
 import {getTasksOfTheWeek} from "./TaskManager";
 import {User} from "../data/User";
 import {TaskType} from "../data/Definitions";
-import {FocusMeta, Focus} from "../data/Fokus";
+import {FocusMeta} from "../data/Fokus";
 import {Zone, ZoneMeta} from "../data/Zone";
 
 test('syncWithRealworld_Blessing', () => {
-    const blessingLabel = FocusMeta.get(Focus.blessing)!.label;
+    const blessingLabel = FocusMeta.get("blessing")!.label;
     expect(getTasksOfTheWeek(User.Sysy, new Date("2022-11-11"))
         .filter(t => t.type === TaskType.Fokus && t.label === blessingLabel).length)
         .toBe(0);

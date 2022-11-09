@@ -1,0 +1,13 @@
+key,label,description
+MorgensBad,"Morgens im Bad","Artur waschen und anziehen & Bad light"
+MorgensKitaKeller,"Morgens Kita / Keller","Artur zur Kita bringen & Wäsche anmachen & ggf. Trockner ausräumen"
+NachmKitaKeller,"Nachmittags Müll / Kita / Keller","Müll rausbringen & Artur von Kita abholen & Wäsche hochbringen oder umtopfen"
+MüllBereit,"Müll bereitstellen","Volle Müllsäcke vor die Tür & neue Müllsäcke verteilen"
+WäscheAuf,"Wäsche auf(- &ab-)hängen","Wäsche aufhängen & ggf. Wäsche abhängen"
+WäscheBereit,"Wäsche bereitstellen","Wäschekorb mit Wäsche, die als nächstes gewaschen werden soll, bereitstellen"
+ArturBett,"Artur zu Bett bringen","Mit Artur aufräumen, Zähne putzen, umziehen, Schlafwindel machen, neuen Wasserbecher machen, vorlesen, Einschlafbegleitung"
+Küche,"Abends die Küche machen","Tisch abräumen und wischen, Wickeltisch rübertragen, Wohnzimmer lüften, Spülmaschine einräumen, Spülen (inkl. Flaschen spülen), Sprudelwasser und Heißwasser machen, Kaffeemaschine versorgen, Altpapier aus Küche raus, Küchenspüle putzen"
+SpülmaschineAus,"Spülmaschine ausräumen","Spülmaschine ausräumen & von Hand Gespültes wegräumen"
+MiniAufräumen,"Mini-Aufräumen","5 Minuten ins Aufräumen investieren"
+SchlafzimmerLüften,"Schlafzimmer lüften","Im Schlaf- bzw. Kinderzimmer Betten aufschlagen und lüften"
+KinderzimmerLüften,"Kinderzimmer lüften","Im Kinderzimmer Betten aufschlagen und lüften"
