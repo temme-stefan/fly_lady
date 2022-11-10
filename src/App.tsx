@@ -1,8 +1,7 @@
 import React, {useEffect, useRef, useState} from 'react';
 import "./App.css";
 import logo from "./img/window_clean.png";
-import {User} from "./data/User";
-import {getTasksOfTheDay, getTasksOfTheWeek} from "./tools/TaskManager";
+import {allUsers, User} from "./data/User";
 import {FilterScope, FilterState, getTitle} from "./uicomponents/Definitions";
 import FilterRegion from "./uicomponents/FilterRegion";
 import Week from "./uicomponents/Week";
@@ -18,7 +17,7 @@ function App() {
     const today = new Date();
     today.setHours(12);
     const defaultFilter = {
-        user: null,
+        users: [...allUsers],
         scope: FilterScope.Week,
         date: today,
         types: [TaskType.Routine, TaskType.Fokus, TaskType.Zone]
@@ -56,10 +55,6 @@ function App() {
     //endregion
 
 
-    const users = [User.Sysy, User.Nappo].filter(u => filterState.user === null || filterState.user === u);
-    const tasks = users.map(
-        u => filterState.scope === FilterScope.SingleDay ? getTasksOfTheDay(u, filterState.date) : getTasksOfTheWeek(u, filterState.date)
-    ).flat().filter(t => filterState.types.includes(t.type));
     return (
         <main>
             <header>
@@ -72,9 +67,9 @@ function App() {
             </section>
             <section className={`taskPane`}>
                 {filterState.scope === FilterScope.Week ? (
-                    <Week tasks={tasks} date={filterState.date}/>
+                    <Week {...filterState}/>
                 ) : (
-                    <SingleDay tasks={tasks} date={filterState.date}/>
+                    <SingleDay {...filterState} />
                 )}
             </section>
             <footer>

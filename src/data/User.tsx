@@ -6,6 +6,8 @@ export enum User {
     Nappo
 }
 
+export const allUsers = [User.Sysy,User.Nappo];
+
 export function homeUser() {
     return User.Sysy;
 }

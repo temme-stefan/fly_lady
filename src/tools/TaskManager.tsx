@@ -39,7 +39,7 @@ function toTask(reoccuringTask: ReoccurringTask, date: Date, user: User): Task {
         case TaskType.Zone:
             const data = ZoneMeta.get(getZone(date, user));
             if (data) {
-                result = {...result,...data}
+                result = {...result, ...data}
             }
             break;
     }
@@ -61,10 +61,6 @@ function isTaskInWeek(task: ReoccurringTask, date: Date) {
 
 function getReoccuringTasks() {
     return [...RoutineTasks, ...FokusTasks, ...ZoneTasks]
-}
-
-export function getTasksOfTheWeek(user: User, date: Date): Task[] {
-    return getReoccuringTasks().filter(t => t.user === user && isTaskInWeek(t, date)).map(t => toTask(t, date, user));
 }
 
 export function getTasksOfTheDay(user: User, date: Date): Task[] {

@@ -1,20 +1,20 @@
 import {Task} from "../tools/TaskManager";
 import {addDays, dayOfWeek, getMonday} from "../tools/Weekdays";
 import SingleDay from "./SingleDay";
+import {FilterState} from "./Definitions";
 
-export default function Week({tasks, date}: { tasks: Task[], date: Date }) {
+export default function Week({date,users,types,scope}:FilterState) {
     const monday = getMonday(date);
-    const partition = Array.from({length: 7}).map((_, i) => {
+    const week = Array.from({length: 7}).map((_, i) => {
         const date = addDays(monday, i);
         const weekDay = dayOfWeek(date);
-        const part = tasks.filter(t => t.day === weekDay);
-        return {date, tasks: part};
+        return date;
     });
 
     return (
         <>
-            {partition.map(({date, tasks}) => (
-                <SingleDay key={date.toDateString()} tasks={tasks} date={date}/>
+            {week.map((date) => (
+                <SingleDay key={date.toDateString()}  {...{date,users,types,scope} }/>
             ))}
         </>
     );

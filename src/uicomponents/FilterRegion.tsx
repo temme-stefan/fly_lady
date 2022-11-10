@@ -1,6 +1,6 @@
 import {FilterScope, FilterScopeLabels, FilterState} from "./Definitions";
 import "./FilterRegion.css"
-import {User, UserData} from "../data/User";
+import {allUsers, User, UserData} from "../data/User";
 import {ManagedSelect} from "./ManagedSelect";
 import {TaskType} from "../data/Definitions";
 
@@ -8,8 +8,8 @@ export default function FilterRegion({values, setValues}
                                          : { values: FilterState, setValues: (value: FilterState) => void }) {
 
     const updateUser = (value: string) => {
-        const val = (value === "-" ? null : Number(value) as User);
-        setValues({...values, user: val});
+        const users = value.split(',').map((s) => User[s as "Sysy" | "Nappo"]);
+        setValues({...values, users});
     }
     const updateScope = (value: string) => {
         setValues({...values, scope: Number(value) as FilterScope});
@@ -29,8 +29,9 @@ export default function FilterRegion({values, setValues}
         setValues({...values, types: [...types]})
     }
 
-    const userOptions: [string, string][] = [...UserData.entries()].map(([key, value]) => [key + "", value.displayName]);
-    userOptions.unshift(["-", "Alle"]);
+    const userOptions: [string, string][] = [...UserData.entries()].map(([key, value]) => [User[key], value.displayName]);
+    userOptions.unshift([allUsers.map(u => User[u]).join(','), "Alle"]);
+    const selectedUser = values.users.map(u => User[u]).join(',');
     const scopeOptions: [string, string][] = [...FilterScopeLabels.entries()].map(([key, value]) => [key + "", value]);
     const typButtons = [TaskType.Routine, TaskType.Fokus, TaskType.Zone].map(t => {
         return {
@@ -40,7 +41,7 @@ export default function FilterRegion({values, setValues}
     });
     return (
         <form onSubmit={() => false}>
-            <ManagedSelect label={"Nutzer"} key={"filterUser"} value={values.user + "" ?? "-"}
+            <ManagedSelect label={"Nutzer"} key={"filterUser"} value={selectedUser}
                            onChange={ev => updateUser(ev.target.value)}
                            options={userOptions} name={"filterUser"}/>
             <ManagedSelect label={"Ansicht"} key={"filterScope"} value={values.scope + ""}

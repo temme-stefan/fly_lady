@@ -28,7 +28,7 @@ export const FilterScopeLabels = new Map([
 ])
 
 export interface FilterState {
-    user: User | null,
+    users: User[],
     scope: FilterScope,
     date: Date,
     types: TaskType[]
