@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import "./App.css";
 import logo from "./img/window_clean.png";
 import {User} from "./data/User";
@@ -11,6 +11,8 @@ import {ExternalLink} from "./uicomponents/ExternalLink";
 
 
 function App() {
+
+    //region Filter state
     const filterStorageKey = "filter";
     const defaultFilter = {
         user: null,
@@ -26,6 +28,28 @@ function App() {
         localStorage.setItem(filterStorageKey, JSON.stringify(state));
         setTitle(getTitle());
     }
+    //endregion
+
+    //region Make it sticky
+    const stickyPart = useRef<HTMLDivElement>(null);
+    const [isSticky,setSticky] = useState(false);
+    const callback:IntersectionObserverCallback = (entries)=>{
+        const [entry]=entries;
+        setSticky(!entry.isIntersecting)
+    }
+    useEffect(()=>{
+        const obs = new IntersectionObserver(callback,{threshold:[1]});
+        if (stickyPart.current){
+            obs.observe(stickyPart.current);
+        }
+        return ()=>{
+            if(stickyPart.current){
+                obs.unobserve(stickyPart.current);
+            }
+        }
+    })
+    //endregion
+
 
     const users = [User.Sysy, User.Nappo].filter(u => filterState.user === null || filterState.user === u);
     const tasks = users.map(
@@ -38,7 +62,7 @@ function App() {
                                                                                   alt={"Scheibenwischwerkzeuge"}/></div>
                 <h1>{title}</h1>
             </header>
-            <section>
+            <section ref={stickyPart} className={`filter ${isSticky?"sticked":""}`}>
                 <FilterRegion values={filterState} setValues={update}/>
             </section>
             <section className={`taskPane ${filterState.scope === FilterScope.Week ? "week" : ""}`}>
