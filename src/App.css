@@ -48,9 +48,6 @@ header h1 {
 
 main > .taskPane {
     flex-grow: 1;
-}
-
-.week {
     display: grid;
     grid-gap: 0.5em;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -60,10 +57,10 @@ main > .taskPane {
     z-index: 1;
     position: sticky;
     top: -1px;
-    padding-top: calc(0.5rem + 1px);
 }
 
 .filter.sticked {
+    padding-top: calc(0.5rem + 1px);
     background: radial-gradient(farthest-corner at 15% 25%, var(--blue_light), var(--blue));
 }
 

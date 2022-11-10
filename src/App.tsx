@@ -43,12 +43,13 @@ function App() {
     }
     useEffect(() => {
         const obs = new IntersectionObserver(callback, {threshold: [1]});
-        if (stickyPart.current) {
-            obs.observe(stickyPart.current);
+        const current = stickyPart.current;
+        if (current) {
+            obs.observe(current);
         }
         return () => {
-            if (stickyPart.current) {
-                obs.unobserve(stickyPart.current);
+            if (current) {
+                obs.unobserve(current);
             }
         }
     }, [stickyPart])
@@ -69,7 +70,7 @@ function App() {
             <section ref={stickyPart} className={`filter ${isSticky ? "sticked" : ""}`}>
                 <FilterRegion values={filterState} setValues={update}/>
             </section>
-            <section className={`taskPane ${filterState.scope === FilterScope.Week ? "week" : ""}`}>
+            <section className={`taskPane`}>
                 {filterState.scope === FilterScope.Week ? (
                     <Week tasks={tasks} date={filterState.date}/>
                 ) : (

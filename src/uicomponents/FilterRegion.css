@@ -3,7 +3,7 @@ form {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    max-width: 500px;
+    max-width: min(500px, 100%);
     flex-wrap: wrap;
 }
 
@@ -20,11 +20,16 @@ form > * > select, form > * > input, form button {
     height: 2rem;
 }
 
+.btn-group{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-gap: 0.2rem;
+}
+
 button {
     background-size: 200%;
     background-position: 0;
     transition: all .3s;
-    margin-right: 0.5rem;
 }
 
 button.active {
