@@ -14,13 +14,15 @@ function App() {
 
     //region Filter state
     const filterStorageKey = "filter";
+    const today = new Date();
+    today.setHours(12);
     const defaultFilter = {
         user: null,
         scope: FilterScope.Week,
-        date: new Date()
+        date: today
     }
     const storedFilter = JSON.parse(localStorage.getItem(filterStorageKey) ?? "{}")
-    const initialFilter = {...defaultFilter, ...storedFilter, ...{date: new Date()}};
+    const initialFilter = {...defaultFilter, ...storedFilter, ...{date: today}};
     const [filterState, setFilterState] = useState<FilterState>(initialFilter);
     const [title, setTitle] = useState<string>(getTitle());
     const update = (state: FilterState) => {
