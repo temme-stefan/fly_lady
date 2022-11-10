@@ -1,13 +1,12 @@
 import React, {useEffect, useRef, useState} from 'react';
 import "./App.css";
 import logo from "./img/window_clean.png";
-import {allUsers, User} from "./data/User";
+import {allUsers} from "./data/User";
 import {FilterScope, FilterState, getTitle} from "./uicomponents/Definitions";
 import FilterRegion from "./uicomponents/FilterRegion";
-import Week from "./uicomponents/Week";
-import SingleDay from "./uicomponents/SingleDay";
 import {ExternalLink} from "./uicomponents/ExternalLink";
 import {TaskType} from "./data/Definitions";
+import InfiniteScrollDays from "./uicomponents/InfiniteScrollDays";
 
 
 function App() {
@@ -66,11 +65,7 @@ function App() {
                 <FilterRegion values={filterState} setValues={update}/>
             </section>
             <section className={`taskPane`}>
-                {filterState.scope === FilterScope.Week ? (
-                    <Week {...filterState}/>
-                ) : (
-                    <SingleDay {...filterState} />
-                )}
+                <InfiniteScrollDays {...filterState}/>
             </section>
             <footer>
                 <div>
