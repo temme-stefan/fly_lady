@@ -1,4 +1,5 @@
 import {User} from "../data/User";
+import {TaskType} from "../data/Definitions";
 
 const Greetings = [
     "Mit einem Wisch ist alles weg",
@@ -29,5 +30,6 @@ export const FilterScopeLabels = new Map([
 export interface FilterState {
     user: User | null,
     scope: FilterScope,
-    date: Date
+    date: Date,
+    types: TaskType[]
 }

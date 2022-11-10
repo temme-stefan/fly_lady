@@ -4,6 +4,7 @@ form {
     justify-content: space-between;
     align-items: center;
     max-width: 500px;
+    flex-wrap: wrap;
 }
 
 form > * {
@@ -11,10 +12,36 @@ form > * {
     flex-direction: column;
 }
 
-form > * > select, form > * > input {
+form > * > select, form > * > input, form button {
     border: 1px solid var(--blue_shadow);
     padding: 0.2rem;
     border-radius: 3px;
     background-color: var(--funktionalOverlay);
-
+    height: 2rem;
 }
+
+button {
+    background-size: 200%;
+    background-position: 0;
+    transition: all .3s;
+    margin-right: 0.5rem;
+}
+
+button.active {
+    background-position: 100%;
+    box-shadow: inset 1px 2px 3px #777;
+    transform: translateY(1px);
+}
+
+button.zone {
+    background-image: linear-gradient(to right, transparent, transparent 20%, var(--c-zone));
+}
+
+button.fokus {
+    background-image: linear-gradient(to right, transparent, transparent 20%, var(--c-focus));
+}
+
+button.routine {
+    background-image: linear-gradient(to right, transparent, transparent 20%, var(--c-routine));
+}
+

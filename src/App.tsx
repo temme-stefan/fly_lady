@@ -8,6 +8,7 @@ import FilterRegion from "./uicomponents/FilterRegion";
 import Week from "./uicomponents/Week";
 import SingleDay from "./uicomponents/SingleDay";
 import {ExternalLink} from "./uicomponents/ExternalLink";
+import {TaskType} from "./data/Definitions";
 
 
 function App() {
@@ -19,7 +20,8 @@ function App() {
     const defaultFilter = {
         user: null,
         scope: FilterScope.Week,
-        date: today
+        date: today,
+        types: [TaskType.Routine, TaskType.Fokus, TaskType.Zone]
     }
     const storedFilter = JSON.parse(localStorage.getItem(filterStorageKey) ?? "{}")
     const initialFilter = {...defaultFilter, ...storedFilter, ...{date: today}};
@@ -32,31 +34,31 @@ function App() {
     }
     //endregion
 
-    //region Make it sticky
+    //region Make Filterregion sticky
     const stickyPart = useRef<HTMLDivElement>(null);
-    const [isSticky,setSticky] = useState(false);
-    const callback:IntersectionObserverCallback = (entries)=>{
-        const [entry]=entries;
+    const [isSticky, setSticky] = useState(false);
+    const callback: IntersectionObserverCallback = (entries) => {
+        const [entry] = entries;
         setSticky(!entry.isIntersecting)
     }
-    useEffect(()=>{
-        const obs = new IntersectionObserver(callback,{threshold:[1]});
-        if (stickyPart.current){
+    useEffect(() => {
+        const obs = new IntersectionObserver(callback, {threshold: [1]});
+        if (stickyPart.current) {
             obs.observe(stickyPart.current);
         }
-        return ()=>{
-            if(stickyPart.current){
+        return () => {
+            if (stickyPart.current) {
                 obs.unobserve(stickyPart.current);
             }
         }
-    })
+    }, [stickyPart])
     //endregion
 
 
     const users = [User.Sysy, User.Nappo].filter(u => filterState.user === null || filterState.user === u);
     const tasks = users.map(
         u => filterState.scope === FilterScope.SingleDay ? getTasksOfTheDay(u, filterState.date) : getTasksOfTheWeek(u, filterState.date)
-    ).flat();
+    ).flat().filter(t => filterState.types.includes(t.type));
     return (
         <main>
             <header>
@@ -64,7 +66,7 @@ function App() {
                                                                                   alt={"Scheibenwischwerkzeuge"}/></div>
                 <h1>{title}</h1>
             </header>
-            <section ref={stickyPart} className={`filter ${isSticky?"sticked":""}`}>
+            <section ref={stickyPart} className={`filter ${isSticky ? "sticked" : ""}`}>
                 <FilterRegion values={filterState} setValues={update}/>
             </section>
             <section className={`taskPane ${filterState.scope === FilterScope.Week ? "week" : ""}`}>

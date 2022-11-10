@@ -37,7 +37,7 @@ header h1 {
     border: 1px solid var(--white);
     width: 5em;
     height: 5em;
-    margin-top:0.4em;
+    margin-top: 0.4em;
     margin-bottom: 0.4em;
     margin-right: 0.5em;
 }
@@ -56,14 +56,14 @@ main > .taskPane {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
 }
 
-.filter{
+.filter {
     z-index: 1;
     position: sticky;
-    top:-1px;
+    top: -1px;
     padding-top: calc(0.5rem + 1px);
-
 }
-.filter.sticked{
+
+.filter.sticked {
     background: radial-gradient(farthest-corner at 15% 25%, var(--blue_light), var(--blue));
 }
 
