@@ -16,20 +16,8 @@ export function getTitle() {
     return Greetings[Math.floor(Math.random() * Greetings.length)]
 }
 
-
-export enum FilterScope {
-    SingleDay,
-    Week
-}
-
-export const FilterScopeLabels = new Map([
-    [FilterScope.SingleDay, "Tag"],
-    [FilterScope.Week, "Woche"]
-])
-
 export interface FilterState {
     users: User[],
-    scope: FilterScope,
     date: Date,
     types: TaskType[]
 }

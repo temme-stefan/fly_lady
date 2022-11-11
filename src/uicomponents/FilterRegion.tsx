@@ -1,4 +1,4 @@
-import {FilterScope, FilterScopeLabels, FilterState} from "./Definitions";
+import {FilterState} from "./Definitions";
 import "./FilterRegion.css"
 import {allUsers, User, UserData} from "../data/User";
 import {ManagedSelect} from "./ManagedSelect";
@@ -10,9 +10,6 @@ export default function FilterRegion({values, setValues}
     const updateUser = (value: string) => {
         const users = value.split(',').map((s) => User[s as "Sysy" | "Nappo"]);
         setValues({...values, users});
-    }
-    const updateScope = (value: string) => {
-        setValues({...values, scope: Number(value) as FilterScope});
     }
     const updateDate = (value: Date) => {
         value.setHours(12);
@@ -32,7 +29,6 @@ export default function FilterRegion({values, setValues}
     const userOptions: [string, string][] = [...UserData.entries()].map(([key, value]) => [User[key], value.displayName]);
     userOptions.unshift([allUsers.map(u => User[u]).join(','), "Alle"]);
     const selectedUser = values.users.map(u => User[u]).join(',');
-    const scopeOptions: [string, string][] = [...FilterScopeLabels.entries()].map(([key, value]) => [key + "", value]);
     const typButtons = [TaskType.Routine, TaskType.Fokus, TaskType.Zone].map(t => {
         return {
             type: t,
@@ -44,9 +40,6 @@ export default function FilterRegion({values, setValues}
             <ManagedSelect label={"Nutzer"} key={"filterUser"} value={selectedUser}
                            onChange={ev => updateUser(ev.target.value)}
                            options={userOptions} name={"filterUser"}/>
-            <ManagedSelect label={"Ansicht"} key={"filterScope"} value={values.scope + ""}
-                           onChange={ev => updateScope(ev.target.value)}
-                           options={scopeOptions} name={"filterScope"}/>
             <div key={"filterDate"}>
                 <label>Datum</label>
                 <input type={"date"} value={values.date.toISOString().substring(0, 10)}

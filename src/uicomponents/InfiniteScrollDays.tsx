@@ -1,19 +1,56 @@
-import {FilterScope, FilterState} from "./Definitions";
+import {FilterState} from "./Definitions";
 import SingleDay from "./SingleDay";
 import {addDays} from "../tools/Weekdays";
+import {useEffect, useRef, useState} from "react";
+import {User} from "../data/User";
+import {TaskType} from "../data/Definitions";
 
+const max = 28;
+const step = 1;
 
+export default function InfiniteScrollDays({date, users, types}: FilterState) {
+    const [days, setDays] = useState<Date[]>([]);
+    const ref = useRef<HTMLDivElement>(null);
 
-export default function ({date, users, types, scope}: FilterState) {
-    const week = Array.from({length: scope==FilterScope.SingleDay?1:7 }).map((_, i) => {
-        const d = addDays(date, i);
-        return d;
-    });
+    useEffect(() => {
+        const current = ref.current;
+        if (current && days.length < max) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        setDays((value) => {
+                            const more = Array.from({length: step}).map((_, i) => {
+                                const d = addDays(date, i + value.length);
+                                return d;
+                            });
+                            return [...value, ...more];
+                        });
+                    }
+                });
+            });
+            observer.observe(current);
+            return () => observer.disconnect();
+        }
+        return undefined;
+    })
+
+    useEffect(()=>{
+        setDays([]);
+    },[date,types,users])
+
+    useEffect(() => {
+        if (days.length==0){
+            setDays([date]);
+        }
+    }, [days]);
+
     return (
         <>
-            {week.map((date) => (
-                <SingleDay key={date.toDateString()}  {...{date,users,types,scope} }/>
-            ))}
+            {
+                days.map((date) => (
+                    <SingleDay ref={ref} key={date.toDateString()}  {...{date, users, types}}/>
+                ))
+            }
         </>
     )
 

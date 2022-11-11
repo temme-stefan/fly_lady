@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import "./App.css";
 import logo from "./img/window_clean.png";
 import {allUsers} from "./data/User";
-import {FilterScope, FilterState, getTitle} from "./uicomponents/Definitions";
+import {FilterState, getTitle} from "./uicomponents/Definitions";
 import FilterRegion from "./uicomponents/FilterRegion";
 import {ExternalLink} from "./uicomponents/ExternalLink";
 import {TaskType} from "./data/Definitions";
@@ -17,7 +17,6 @@ function App() {
     today.setHours(12);
     const defaultFilter = {
         users: [...allUsers],
-        scope: FilterScope.Week,
         date: today,
         types: [TaskType.Routine, TaskType.Fokus, TaskType.Zone]
     }

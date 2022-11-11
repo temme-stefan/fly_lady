@@ -1,6 +1,5 @@
 import {Task} from "../tools/TaskManager";
 import "./TaskCard.css";
-import {Weekday} from "../tools/Definitions";
 import {TaskType} from "../data/Definitions";
 import React, {useState} from "react";
 import {UserData} from "../data/User";
