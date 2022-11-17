@@ -1,3 +1,5 @@
+[![Test](https://github.com/temme-stefan/fly_lady/actions/workflows/github.actions-runtest.yml/badge.svg?branch=main)](https://github.com/temme-stefan/fly_lady/actions/workflows/github.actions-runtest.yml)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
