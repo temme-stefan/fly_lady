@@ -4,8 +4,6 @@ import React from "react";
 import TaskCard from "./TaskCard";
 import {equalDay} from "../tools/Weekdays";
 import {FilterState} from "./Definitions";
-import {User} from "../data/User";
-import {TaskType} from "../data/Definitions";
 
 const SingleDay = React.forwardRef<HTMLDivElement>((props, ref) => {
     const {users, date, types} = props as (FilterState);

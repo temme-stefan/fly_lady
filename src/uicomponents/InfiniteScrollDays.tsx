@@ -2,8 +2,6 @@ import {FilterState} from "./Definitions";
 import SingleDay from "./SingleDay";
 import {addDays} from "../tools/Weekdays";
 import {useEffect, useRef, useState} from "react";
-import {User} from "../data/User";
-import {TaskType} from "../data/Definitions";
 
 const max = 28;
 const step = 1;
@@ -34,12 +32,12 @@ export default function InfiniteScrollDays({date, users, types}: FilterState) {
         return undefined;
     })
 
-    useEffect(()=>{
+    useEffect(() => {
         setDays([]);
-    },[date,types,users])
+    }, [date, types, users])
 
     useEffect(() => {
-        if (days.length==0){
+        if (days.length === 0) {
             setDays([date]);
         }
     }, [days]);
