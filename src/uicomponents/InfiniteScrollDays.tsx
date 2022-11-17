@@ -40,7 +40,7 @@ export default function InfiniteScrollDays({date, users, types}: FilterState) {
         if (days.length === 0) {
             setDays([date]);
         }
-    }, [days]);
+    });
 
     return (
         <>
