@@ -22,22 +22,22 @@ test('syncWithRealworld_Blessing', () => {
 })
 
 test('syncWithRealworld_Zone', () => {
-    expect(getTasksOfTheDay(User.Nappo, new Date("2022-10-20"))
+    expect(getTasksOfTheDay(User.Nappo, new Date("2023-01-03"))
         .filter(t => t.type === TaskType.Zone && t.label === ZoneMeta.get(Zone.Wohnzimmer)!.label).length)
         .toBe(0);
-    expect(getTasksOfTheDay(User.Nappo, new Date("2022-10-27"))
+    expect(getTasksOfTheDay(User.Nappo, new Date("2023-01-10"))
         .filter(t => t.type === TaskType.Zone && t.label === ZoneMeta.get(Zone.Wohnzimmer)!.label).length)
         .toBeGreaterThan(0);
-    expect(getTasksOfTheDay(User.Nappo, new Date("2022-11-03"))
+    expect(getTasksOfTheDay(User.Nappo, new Date("2023-01-17"))
         .filter(t => t.type === TaskType.Zone && t.label === ZoneMeta.get(Zone.Wohnzimmer)!.label).length)
         .toBeGreaterThan(0);
-    expect(getTasksOfTheDay(User.Nappo, new Date("2022-11-10"))
+    expect(getTasksOfTheDay(User.Nappo, new Date("2023-01-24"))
         .filter(t => t.type === TaskType.Zone && t.label === ZoneMeta.get(Zone.Wohnzimmer)!.label).length)
         .toBe(0);
-    expect(getTasksOfTheDay(User.Sysy, new Date("2022-11-02"))
+    expect(getTasksOfTheDay(User.Sysy, new Date("2023-01-16"))
         .filter(t => t.type === TaskType.Zone && t.label === ZoneMeta.get(Zone.Küche)!.label).length)
         .toBeGreaterThan(0);
-    expect(getTasksOfTheDay(User.Sysy, new Date("2022-11-09"))
+    expect(getTasksOfTheDay(User.Sysy, new Date("2023-01-23"))
         .filter(t => t.type === TaskType.Zone && t.label === ZoneMeta.get(Zone.Küche)!.label).length)
         .toBeGreaterThan(0);
 
