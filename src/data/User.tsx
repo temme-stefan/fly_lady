@@ -9,7 +9,7 @@ export enum User {
 export const allUsers = [User.Sysy,User.Nappo];
 
 export function homeUser() {
-    return User.Sysy;
+    return User.Nappo;
 }
 
 export const UserData = new Map([

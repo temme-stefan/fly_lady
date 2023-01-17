@@ -1,13 +1,13 @@
 key,user,dayOfWeek,weekFrequenz
 MorgensBad,Sysy,"Monday,Wednesday,Friday",Every
 MorgensKitaKeller,Nappo,"Monday,Wednesday,Friday",Every
-NachmKitaKeller,Nappo,"Monday,Wednesday",Every
+NachmKitaKeller,Nappo,"Thursday,Wednesday",Every
 WäscheAuf,Sysy,"Monday,Wednesday",Every
 ArturBett,Nappo,"Monday,Wednesday",Every
 Küche,Sysy,"Monday,Wednesday",Every
 MorgensBad,Nappo,"Tuesday,Thursday",Every
 MorgensKitaKeller,Sysy,"Tuesday,Thursday",Every
-NachmKitaKeller,Sysy,"Tuesday,Thursday",Every
+NachmKitaKeller,Sysy,"Tuesday,Monday",Every
 WäscheAuf,Nappo,"Tuesday,Thursday",Every
 ArturBett,Sysy,"Tuesday,Thursday",Every
 Küche,Nappo,"Tuesday,Thursday",Every
