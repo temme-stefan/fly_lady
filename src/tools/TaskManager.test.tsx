@@ -4,6 +4,7 @@ import {User} from "../data/User";
 import {TaskType} from "../data/Definitions";
 import {FocusMeta} from "../data/Fokus";
 import {Zone, ZoneMeta} from "../data/Zone";
+import {addDays, getMonday} from "./Weekdays";
 
 test('syncWithRealworld_Blessing', () => {
     const blessingLabel = FocusMeta.get("blessing")!.label;
@@ -21,24 +22,41 @@ test('syncWithRealworld_Blessing', () => {
         .toBe(1);
 })
 
-test('syncWithRealworld_Zone', () => {
-    expect(getTasksOfTheDay(User.Nappo, new Date("2023-01-03"))
-        .filter(t => t.type === TaskType.Zone && t.label === ZoneMeta.get(Zone.Wohnzimmer)!.label).length)
-        .toBe(0);
-    expect(getTasksOfTheDay(User.Nappo, new Date("2023-01-10"))
-        .filter(t => t.type === TaskType.Zone && t.label === ZoneMeta.get(Zone.Wohnzimmer)!.label).length)
-        .toBeGreaterThan(0);
-    expect(getTasksOfTheDay(User.Nappo, new Date("2023-01-17"))
-        .filter(t => t.type === TaskType.Zone && t.label === ZoneMeta.get(Zone.Wohnzimmer)!.label).length)
-        .toBeGreaterThan(0);
-    expect(getTasksOfTheDay(User.Nappo, new Date("2023-01-24"))
-        .filter(t => t.type === TaskType.Zone && t.label === ZoneMeta.get(Zone.Wohnzimmer)!.label).length)
-        .toBe(0);
-    expect(getTasksOfTheDay(User.Sysy, new Date("2023-01-16"))
-        .filter(t => t.type === TaskType.Zone && t.label === ZoneMeta.get(Zone.Küche)!.label).length)
-        .toBeGreaterThan(0);
-    expect(getTasksOfTheDay(User.Sysy, new Date("2023-01-23"))
-        .filter(t => t.type === TaskType.Zone && t.label === ZoneMeta.get(Zone.Küche)!.label).length)
-        .toBeGreaterThan(0);
+expect.extend({
+    toConsistOfSingleString(got: Set<string>, test: string) {
+        const pass = got.size == 1 && got.has(test);
+        const message = () => [
+            got.size != 1 ? `expected Set to contain single element, got ${got.size}.` : false,
+            !got.has(test) ? `expected Set to contain ${test}.` : false
+        ].filter(Boolean).join(" ");
+        return {pass, message}
+    },
+    toConsistOfSingleStringButNotTest(got: Set<string>, test: string) {
+        const pass = got.size == 1 && !got.has(test);
+        const message = () => [
+            got.size != 1 ? `expected Set to contain single element, got ${got.size}.` : false,
+            got.has(test) ? `expected Set not to contain ${test}, got ${test}.` : false
+        ].filter(Boolean).join(" ");
+        return {pass, message}
+    }
+})
 
+test('syncWithRealworld_Zone', () => {
+    const getZoneOfTheWeekAndUser = (user: User, date: Date) => {
+        const monday = getMonday(date);
+        return new Set(
+            Array.from({length: 7})
+                .map((_, i) => addDays(monday, i))
+                .map(day => getTasksOfTheDay(user, day).filter(task => task.type == TaskType.Zone))
+                .flat()
+                .map(t => t.label)
+        );
+    }
+    const start = new Date("2023-01-10");
+    expect( getZoneOfTheWeekAndUser(User.Nappo, start)).toConsistOfSingleStringButNotTest(ZoneMeta.get(Zone.Wohnzimmer)!.label);
+    expect( getZoneOfTheWeekAndUser(User.Nappo, addDays(start, 7))).toConsistOfSingleString(ZoneMeta.get(Zone.Wohnzimmer)!.label);
+    expect( getZoneOfTheWeekAndUser(User.Nappo, addDays(start, 14))).toConsistOfSingleString(ZoneMeta.get(Zone.Wohnzimmer)!.label);
+    expect( getZoneOfTheWeekAndUser(User.Nappo, addDays(start, 21))).toConsistOfSingleStringButNotTest(ZoneMeta.get(Zone.Wohnzimmer)!.label);
+    expect( getZoneOfTheWeekAndUser(User.Sysy, addDays(start, 14))).toConsistOfSingleString(ZoneMeta.get(Zone.Küche)!.label);
+    expect( getZoneOfTheWeekAndUser(User.Sysy, addDays(start, 21))).toConsistOfSingleString(ZoneMeta.get(Zone.Küche)!.label);
 })
