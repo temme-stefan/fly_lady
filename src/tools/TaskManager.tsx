@@ -17,7 +17,7 @@ export interface Task {
 }
 
 function getZone(date: Date, user: User): Zone {
-    const week = dateToWeek(date) + 4;
+    const week = dateToWeek(date) +1;
     if (userCount !== 2) {
         throw Error("Zuviele Nutzer");
     }

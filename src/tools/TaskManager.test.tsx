@@ -52,11 +52,13 @@ test('syncWithRealworld_Zone', () => {
                 .map(t => t.label)
         );
     }
-    const start = new Date("2023-01-10");
-    expect( getZoneOfTheWeekAndUser(User.Nappo, start)).toConsistOfSingleStringButNotTest(ZoneMeta.get(Zone.Wohnzimmer)!.label);
-    expect( getZoneOfTheWeekAndUser(User.Nappo, addDays(start, 7))).toConsistOfSingleString(ZoneMeta.get(Zone.Wohnzimmer)!.label);
-    expect( getZoneOfTheWeekAndUser(User.Nappo, addDays(start, 14))).toConsistOfSingleString(ZoneMeta.get(Zone.Wohnzimmer)!.label);
-    expect( getZoneOfTheWeekAndUser(User.Nappo, addDays(start, 21))).toConsistOfSingleStringButNotTest(ZoneMeta.get(Zone.Wohnzimmer)!.label);
-    expect( getZoneOfTheWeekAndUser(User.Sysy, addDays(start, 14))).toConsistOfSingleString(ZoneMeta.get(Zone.Küche)!.label);
-    expect( getZoneOfTheWeekAndUser(User.Sysy, addDays(start, 21))).toConsistOfSingleString(ZoneMeta.get(Zone.Küche)!.label);
+    const start = new Date("2023-03-14");
+    const nappoNextTwoWeek = Zone.Küche;
+    const sysyOverNexTwoWeeks = Zone.Bäder;
+    expect( getZoneOfTheWeekAndUser(User.Nappo, start)).toConsistOfSingleStringButNotTest(ZoneMeta.get(nappoNextTwoWeek)!.label);
+    expect( getZoneOfTheWeekAndUser(User.Nappo, addDays(start, 7))).toConsistOfSingleString(ZoneMeta.get(nappoNextTwoWeek)!.label);
+    expect( getZoneOfTheWeekAndUser(User.Nappo, addDays(start, 14))).toConsistOfSingleString(ZoneMeta.get(nappoNextTwoWeek)!.label);
+    expect( getZoneOfTheWeekAndUser(User.Nappo, addDays(start, 21))).toConsistOfSingleStringButNotTest(ZoneMeta.get(nappoNextTwoWeek)!.label);
+    expect( getZoneOfTheWeekAndUser(User.Sysy, addDays(start, 14))).toConsistOfSingleString(ZoneMeta.get(sysyOverNexTwoWeeks)!.label);
+    expect( getZoneOfTheWeekAndUser(User.Sysy, addDays(start, 21))).toConsistOfSingleString(ZoneMeta.get(sysyOverNexTwoWeeks)!.label);
 })
